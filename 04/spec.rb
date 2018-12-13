@@ -25,25 +25,21 @@ RSpec.describe Solution do
     INPUT
   end
 
-  describe '#sleepiest_guard' do
-    subject { solution.sleepiest_guard.number }
-    it { is_expected.to eq "10" }
+  describe '' do
+    subject { solution }
   end
 
-  context 'guard' do
-    describe '#total_minutes_asleep' do
-      it 'works' do
-        expect(solution.guards.first.total_minutes_asleep).to eq 50
-        expect(solution.guards[1].total_minutes_asleep).to eq 30
-      end
-    end
+  describe '#sleepiest_guard' do
+    subject { solution.sleepiest_guard }
+    it { is_expected.to eq 10 }
+  end
 
-    describe '#minute_most_slept_at' do
-      it 'works' do
-        expect(solution.guards.first.minute_most_slept_at).to eq 24
-        expect(solution.guards[1].minute_most_slept_at).to eq 45
-      end
-    end
+  describe '#sleepiest_minute' do
+    subject { solution.sleepiest_minute(guard) }
+
+    let(:guard) { 10 }
+
+    it { is_expected.to eq 24 }
   end
 end
 
