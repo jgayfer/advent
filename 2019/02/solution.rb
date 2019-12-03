@@ -4,14 +4,14 @@ class PartOne
   OP_CODE_LENGTH = 4
 
   def solve
-    input[1] = 12
-    input[2] = 2
+    memory[1] = 12
+    memory[2] = 2
 
     opcodes.each do |opcode|
       if opcode.first == 1
-        input[opcode[3]] = input[opcode[1]] + input[opcode[2]]
+        memory[opcode[3]] = memory[opcode[1]] + memory[opcode[2]]
       elsif opcode.first == 2
-        input[opcode[3]] = input[opcode[1]] * input[opcode[2]]
+        memory[opcode[3]] = memory[opcode[1]] * memory[opcode[2]]
       elsif opcode.first == 99
         break
       else
@@ -19,15 +19,19 @@ class PartOne
       end
     end
 
-    input.first
+    memory.first
   end
 
   def opcodes
-    input.each_slice(OP_CODE_LENGTH).to_a
+    memory.each_slice(OP_CODE_LENGTH).to_a
+  end
+
+  def memory
+    @memory ||= input.dup
   end
 
   def input
-    @input ||= input_file.split(',').map(&:to_i)
+    input_file.split(',').map(&:to_i)
   end
 
   def input_file
