@@ -42,3 +42,25 @@ class PartOne
     @input_file ||= File.read('input.txt')
   end
 end
+
+class PartTwo < PartOne
+  class NoSolutionError < StandardError; end
+
+  def solve
+    0.upto(99) do |noun|
+      0.upto(99) do |verb|
+        reset_memory
+        memory[1] = noun
+        memory[2] = verb
+        process_opcodes
+        return 100 * noun + verb if memory.first == 19690720
+      end
+    end
+
+    raise NoSolutionError
+  end
+
+  def reset_memory
+    @memory = input.dup
+  end
+end
