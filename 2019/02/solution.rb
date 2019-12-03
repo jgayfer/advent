@@ -7,6 +7,12 @@ class PartOne
     memory[1] = 12
     memory[2] = 2
 
+    process_opcodes
+
+    memory.first
+  end
+
+  def process_opcodes
     opcodes.each do |opcode|
       if opcode.first == 1
         memory[opcode[3]] = memory[opcode[1]] + memory[opcode[2]]
@@ -18,8 +24,6 @@ class PartOne
         raise OpcodeError
       end
     end
-
-    memory.first
   end
 
   def opcodes
