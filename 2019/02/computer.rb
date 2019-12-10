@@ -1,4 +1,3 @@
-require 'pry'
 class Computer
   attr_reader :memory, :curr_address
 
